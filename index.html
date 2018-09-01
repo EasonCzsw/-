@@ -21,5 +21,53 @@
 			return res;
 		}
 	</script>
+	<h3>变量的作用域</h3>
+	<br>
+	<p>在JavaScript中，全局变量指的是定义在所有函数之外的变量，与之相对的是“局部变量”，所指的则是在某个函数中定义的变量。</p>
+	<p>具体示例</p>
+	<pre>
+		<code>
+			var global = 1;
+			function f() {
+			   var local = 2;
+			   global++;
+			   return global;
+			}		
+		</code>
+	</pre>	
+	<p>
+	    (1) 函数f ()可以访问变量global。
+	    (2) 在函数f ()以外，变量local是不存在的。
+	</p>
+	<pre>
+		<code>
+			> f();
+			<b>2</b>
+		
+			> f ();
+			<b>3</b>
+			
+			> local;
+			<b>ReferenceError: local is not defined</b>	
+		</code>
+	</pre>
+	<p>如果我们声明一个变量时没有使用var语句，该变量就会默认为全局变量。</p>
+	<h3>变量提升</h3>
+	<pre>
+		<code>
+			var a = 123;
+			
+			function f() {
+				alert(a);
+				var a = 1;
+				alert(a);
+			}
+		
+			f();
+		</code>
+	</pre>
+	<p>第一个alert ()显示的是undefined，这是因为函数域始终优先于全局域，所以局部变量a会覆盖掉所有与它同名的全局变量，尽管在alert ()第一次被调用时，a还没有被正式定义，但该变量本身已经存在于本地空间了。这种特殊的现象叫做提升。</p>
+	<p>当JavaScript执行过程进入新的函数时，这个函数内被声明的所有变量都会被移动(或者说提升)到函数最开始的地方。</p>
+	<p>被提升的只有变量的声明，这意味着，只有函数体内声明的这些变量在该函数执行开始时就存在，而与之相关的赋值操作并不会提升，它还在其原来的位置上。</p>
 </body>
-</html>
+</html>	
