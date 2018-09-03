@@ -7,6 +7,54 @@
 	<link rel="stylesheet" href="">
 </head>
 <body>
-	<h3></h3>
+	<h3>函数的简介</h3>
+	<p>函数也是一个对象，函数中可以封装一些功能，在重要的时候可以执行</p>
+	var fun = new Function();
+	
+	console.log(typeof fun); //检查一个函数对象会返回function
+	
+	//构造函数
+	var fun1 = new Function("console.log('Hello 这是我的第一个函数');")；
+	
+	//封装导函数中的代码不会立即执行
+	//函数中的代码会在函数调用时执行
+	//当调用函数时，函数中封装的代码会按顺序执行
+
+	fun1(); //"Hello 这是我的第一个函数"
+
+	//函数声明
+	<p>语法：function 函数名([形参1， 形参2... 形参N]) {语句... }</p>
+	function fun2 () {
+		console.log("这是我的第二个函数");
+	}	
+	
+	fun2(); //"这是我的第二个函数"
+	
+	//函数表达式
+	<p>语法：var 函数名 = function ([形参1，形参2...形参N]) {语句....}</p>
+	
+	var fun3 = function() {
+		console.log("我是匿名函数中封装的代码");
+	};
+	
+	fun3(); //我是匿名函数中封装的代码
+
+
+	<h3>函数的参数</h3>
+	<p>在函数的()中可以指定一个或多个形参，多个形参之间隔开，声明形参相当于在函数内部声明了对应的变量,形参可以是任意的数据类型</p>
+	//定义一个求和的参数
+	function sum (a, b) {
+		return a + b;
+	}
+	
+	<p>在调用函数时，可以在()中指定实参</p>
+	sum(1, 2); //3
+	sum(123, 456); //579
+	sum(123, "Hello"); //"123Hello"
+	sum(true, false); //1
+
+	//调用函数时，解析器不会检查实参数量
+	sum(123, 456, "Hello", true, null); //579
+	sum(123); //NaN
 </body>
 </html>
