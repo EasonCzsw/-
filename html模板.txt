@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<head> 
+<title>Setting File Title</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta http-equiv="Content-Language" content="zh-CN" /> 
+<meta name="author" content="skydao" /> 
+<meta name="Copyright" content="skydao" /> 
+<meta name="description" content="描述内容" />
+<meta http-equiv="refresh" content="10;url=http://yourlink" />
+<meta name="keywords" content="php mysql html css javascript ajax java java ee"/>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<link rel="stylesheet" href="#" type="text/css" media="handheld, all" /> 
+<style type="text/css" media="print, screen">
+	body {
+			width: 1080px;
+			margin: 0 auto;
+		}
+		/* header start */
+		header {
+			width: 100%;		
+		}
+		header .top {
+			width: 100%; 
+			height: 3px; 
+			backgroud-color: orange;
+		}
+		header .top1 {
+			width：100%; 
+			height: 30px;
+			backgroud-color: #888;
+		}
+		/* header end */
+</style> 
+</head>
+<body>
+	<header>
+		<div class = "top"></div>
+		<div class = "top1" >
+			<div class = "fl">
+				<ul>
+					<li>
+						<a>设为首页</a>
+					</li>
+					<li>
+						<a>手机新浪网</a>
+					</li>
+					<li>
+						<i></i>
+						<a>移动客户端</a>
+					</li>
+				</ul>
+			</div>	
+			<div class = "fr">
+				<ul>
+					<li>
+						<a>登录</a>
+					</li>
+					<li>
+						<a>微博</a>
+					</li>
+					<li>
+						<a>博客</a>
+					</li>
+					<li>
+						<a>邮箱</a>
+					</li>
+					<li>
+						<a>网站导航</a>
+					</li>
+				</ul>
+			</div>
+		</div>		
+	</header>
+	<main>
+	
+	</main>
+	<footer>
+
+	</footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+new RegExp = (pattern[,flags]);
+// pattern:特定的描述规则，用以描述匹配字符串的特征。
+// flags:用以限定正则表达式行为的标志，该参数可选。
+
+const reg_Exp = new RegExp (/^[a-zA-Z]+[0-9]*\w?_$/, "gi");
+// const 是常量 
+// g:global 全局模式
+// i:ignore case 忽略大小写
+
+const reg_Exp = new RegExp (/^[a-zA-Z]+[0-9]*\w?_$/, "gi");
+
+const reg_Exp = /[a-zA-Z]+[0-9]*\w?_/g;
+const str = 'abcd1234~_!!!!~abcd1234~';
+const string_processed = str.replace (reg_Exp, 'target');
+// "target!!!!~target"
+
+const reg_Exp = /[a-zA-Z]+[0-9]*\w?_/;
+const str = 'abcd1234~_!!!!~abcd1234~_';
+const string_processed = str.replace (reg_Exp, 'target');
+// 忽略g全局模式时，只返回一个 "target!!!!~abcd1234~"
+
+const reg_Exp = /[a-z]/ig;
+const str = 'aBc123';
+const string_processed = str.replace (reg_Exp, '*');
+// "***123"
+
+const reg_Exp = /[a-z]/g;
+const str = 'aBc123';
+const string_processed = str.replace (reg_Exp, '*');
+// "*B*123"
+
+// m:多行搜索
+// 原义文本字符：表示原来意思是什么就是什么的字符
+// 元字符：表示正则表达式中带有特殊含义的非字母字符
+// 字符类：[abc]中a、b、c就是字符
+// 范围类：[a-zA-Z]中[]限定取值的范围
+// 取反类：[^0-9]中表示取值是除了0-9以外的都匹配
+
+// \t:水平制表符
+// \v:垂直制表符
+// \n:换行符
+// \r:回车符
+// \0:空字符
+// \f:换页符
+// \cx:Ctrl+x
+
+// .== [^\r\n] 除回车换行外所有字符
+// \d == [0-9] 数字
+// \D == [^0-9] 非数字
+// \s == [\t\n\x0B\f\r] 空白符
+// \S == [^\t\n\x0B\f\r] 非空白符
+// \w == [a-zA-Z0-9_] 单词字符
+// \W == [^a-zA-Z0-9] 非单词字符
+
+"12345678901234567890".replace (/\d{20}/g,'20个数字')；
+// 20个数字
+
+// ?:最多出现一次
+// +：至少出现一次
+// *:任意次
+// {n}:n次
+// {n,m}:n-m次
+// {n,}:至少出现n次
+
+"abbbcccce".replace (/a{1,2}b{3,}c{4}d?e+f*/, 'hahaha');
+// hahaha
+
+// ^:表示以...开始，在多行匹配中匹配行开头；
+// $:表示以...结尾，在多行匹配中匹配行结尾；
+
+/[A-Z]\w*\d/.test('sAdasdas67') //true
+// 添加^与$补充正则
+/^[A-Z]\w*\d$/.test('sAdasdas67') //false
+/^[A-Z]\w*\d$/.test('Adasdas67') //true
+
+m:multiple lines 多行搜索
+"boy\nnext\ndoor"
+"boy\nnext\ndoor".replace(/^|$/g, '♂'/);
+"boy\nnext\ndoor".replace(/^|$/gm, '♂'/);
+
+// \b:单词边界
+// \B:非单词边界
+"(′?Д?)」你是猪！pig！".replace(/\b/g, '#');  // "(′?Д?)」你是猪！#pig#！"
+"(′?Д?)」你是猪！pig！".replace(/\B/g, '#');  // "#(#′#?#Д#?#)#」#你#是#猪#！p#i#g！#"
