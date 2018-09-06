@@ -108,4 +108,56 @@ meta元素提供的信息不显示在页面中，一般用来定义页面信息�
 
 		用法2.(禁止百度自动转码)
 		说明：用于禁止当前页面在移动端浏览时，被百度自动转码。
-		<meta http-equov = "Cache-Control" content>	
+		<meta http-equov = "Cache-Control" content = "no-siteapp" />
+		
+		D.expires(网页到期时间)
+		说明：用于设定网页的到期时间，过期后网页必须到服务器上重新传输。
+		<meta name = "expires" content = "Sunday 26 October 2016 01:00 GMT" />
+
+		E.refresh(自动刷新并指向某页面)
+		s说明：网页将在设定的时间内，自动刷新并调向设定的网址。
+		<meta http-equiv = "refresh" content = "2; URL=http://www.lxxyx.win/"> //意思是最后两秒转向我的博客
+
+		F.Set-Cookie(cookie设定)
+		说明：如果网页过期。那么这个网页存在本地的cookie也会被自动删除。
+		<meta http-equiv = "Set-Cookie" content = "name,date"> //格式
+		<meta http-equiv = "Set-Cookie" content = "User=Lxxyx; path = /; expires = Sunday, 10-Jan-16 10:00:00 GMT"> //具体范例
+			
+URL 
+	URL是地址的别名(统一资源定位符)。它包含关于文件存储位置和浏览器应如何处理它的信息。
+	URL的第一部分称为模式。模式高速浏览器如何处理需要打开的文件。最常见的模式是HTTP(超文本传输协议)。HTTP是用于访问网页的。HTTPS是用于电子商务网站等安全网站。
+	
+	 模 式      主 机 名        路 径
+	 __|__   ______|_____  _______|______
+	|     | |            ||              |
+	"http: //www.site.com/tofu/index.html"
+			      |___||_________|
+                             	|       |
+                              目 录  文 件 名
+	
+	URL的第二个部分是文件所在的主机的名称，紧接着是路径，路径包含到达这个文件的文件夹以及文件本身的名称。
+	其他常见的模式有FTP(文件传输协议)
+	
+	模 式      主 机 名       路 径                                   
+         _|_    _____|_____  _______|_______
+        |   |  |           ||               |
+        "ftp://ftp.site.com/pub/proposal.pdf"
+                           |___||___________|
+                             |        |
+                           目 录   文 件 名
+	
+	电子邮件地址的URL
+
+	  模 式     电 子 邮 箱 地 址  
+         ___|__  ___________|___________
+        |      ||                       |
+        "mailto: somename@somedomain.com"
+
+	1.绝对URL
+	  绝对URL指向包含指向目录或文件的完整信息，包括模式、主机名和路径。
+	  "http://en.wikipedia.org/wiki/linum_lewisii"
+	2.相对URL
+	  相对URL指向以包含URL本身文件的位置为参照点，描述目标文件的位置(当前页面与指向文件在同一目录下或山下级中，描述指向文件的位置)。
+	  当文件位于web服务器中，可以在最开始使用一个斜杆，这就是根相对URL。
+	  
+						
