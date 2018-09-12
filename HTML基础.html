@@ -230,4 +230,68 @@ HTML：有含义的标记
 		</nav>
 	</header>
 	
-	2.标记页面的主要区域	  	
+	2.标记导航
+	HTML5中有一个元素nav，nav中的链接可以指向页面中的内容，也可以指向其他页面或资源，或者两者兼而有之。
+	<body>
+		<!-- ==== 开始页面级页眉 ==== -->
+		<header role =  "banner">
+			<!-- ==== 站点标识可以放在这里 ==== -->
+			<!-- ==== 全站导航 ====  -->
+			<nav role = "navigation">
+				<ul>...</ul>
+			</nav>
+			
+		</header>
+
+		<!-- ==== 开始主要内容 ==== -->
+		<main role = "main">
+			<h1>Arts & Entertainment: Museums</h1>
+			
+			<article>
+				<h2>Gallery Opening Features the Inspired, Inspireing</h2>
+				<p>...故事内容...</p>
+			<article>
+				
+			<aside>
+				<h2>Other Stories</h2>
+				<!-- 没有包含在nav里  -->
+				<ul>...[故事链接]...</ul>
+			</aside>
+			
+		</main>
+
+		<!-- ==== 开始附注栏 ==== -->
+		<aside>
+			<!-- 次级导航 -->
+			<nav role = "navigation">
+				<ul>
+					<li>
+						<a href = "/arts/movies/">Movies</a>
+					</li>
+					<li>
+                                                <a href = "/arts/music/">Music</a>
+                                        </li>
+					...
+				</ul>
+			</nav>
+		</aside>
+
+		<!-- ====  开始页面级页脚 ==== -->
+		<footer role = "contentinfo">
+			<!-- 辅助性链接并未包含在nav中 -->
+			<ul>...</ul>
+		</footer>
+	</body>
+	
+	3.页面标记的主要区域
+	页面中只有一个部分代表主要内容。可以将这样的内容包在main中，该元素在一个页面中仅能使用一次。
+	
+	<body>
+		<header role = "banner">
+			<nav role = "navigation">
+				...[包含多个链接的ul]...
+			</nav>
+		</header>
+	
+		
+	</body>
