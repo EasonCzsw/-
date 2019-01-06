@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>第五章基本包装类型</title>
+  <style>
+	body {
+		color: #1E90FF;	
+		background-color: #242424;
+	}
+  </style>
+ </head>
+ <body>
+	<h3>基本包装类型</h3>
+	<p>为了便于操作基本类型，提供了3个特殊的引用类型：Boolean、String、Number</p>
+	<pre>
+		<code>
+			var s1 = "some text";
+			var s2 = s1.substring(2);
+
+			（1）创建一个String实例；
+			（2）在实例上调用指定的方法；
+			（3）销毁这个实例；
+
+			var s1 = new String("some text");
+			var s2 = s1.substring(2);
+			s1 = null;
+
+			var s1 = "some text";
+			s1.color = "red";
+			document.write(s1.color); //undefined
+		</code>
+	</pre>
+	<p>对基本包装类型的实例调用typeof会返回Object，而且所有的基本包装类型的对象都会被转换为布尔值true。</p>
+	<pre>
+		<code>
+			var value = 25; 
+			var number = new Number(value);
+			document.write(typeof number); //Object
+			document.write(number instanceof Number); //true
+
+			var string = new String("some text");
+			document.write(typeof string); //Object
+			document.write(string instanceof String); //true
+
+			var boolean = new Boolean(false);
+			document.write(typeof boolean);
+			document.write(boolean instanceof Boolean);
+		</code>
+	</pre>
+	<h4>Boolean类型</h4>
+	<p>Boolean类型重写了valueOf()方法，返回基本类型true和false;重写了toString()类型，返回字符串“true”和“false”。</p>
+	<p>在布尔表达式中使用Boolean对象会产生误区。</p>
+	<pre>
+		<code>
+			var falseObject = new Boolean(false);
+			var result = falseObject && true;
+			document.write(result); //true
+
+			var falseValue = false;
+			result = falseValue && true;
+			document.write(result); //false
+
+			document.write(typeof falseObject); //Object
+			document.write(typeof falseValue); //boolean
+			document.write(falseObject instanceof Boolean); //true
+			document.write(falseValue instanceof Boolean); //false
+		</code>
+	</pre>
+	
+	<h4>Number类型</h4>
+	<p>Number类型重写了valuOf()、toLocaleString()和toString()方法。重写后的valueOf方法返回对象表示的基本类型的数值，另外两个方法返回字符串形式的数值。</p>
+	<pre>
+		<code>
+			var number = Number(20);
+			document.write(number.valueOf()); //20
+			document.write(number.toLocaleString()); //"20"
+			document.write(number.toString()); //"20"
+		</code> 
+	</pre>
+	<p>还可以为toString()方法传递一个表示基数的参数，返回几进制数值的字符串形式。</p>
+	<pre>
+		<code>
+			var num = 10;
+			document.write(num.toString()); //"10"
+			document.write(num.toString(2)); //"1010"
+			document.write(num.toString(8)); //"12"
+			document.writr(num.toString(10)); //"10"
+			document.write(num.tostring(16)); //"a"
+		</code>
+	</pre>
+	<p>toFixed()方法会返回指定的小数位返回数值的字符串表示。</p>
+	<pre>
+		<code>
+			var num_x = 10;
+			document.write(num_x.toFixed(2)); //"10.00"
+			
+			var num_x = 10.005;
+			document.write(num_x.toFixed(2)); //"10.01"
+		</code>
+	</pre>
+	<p>toExponential()，该方法返回以指数表示法表示数值的字符串形式。</p>
+	<pre>
+		<code>
+			var num_x = 20;
+			document.write(num_x.toExponential(1)); //"1.0e+1"
+		</code>
+	</pre>	
+	<p>toPrecision()方法会返回固定大小格式，接受一个参数，即表示数值的所有数字位数。</p>
+	<pre>
+		<code>
+			var num_P = 99;
+			document.write(num_P.toPrecision(1)); //"1e+2"
+			document.write(num_P.toPrecision(2)); //"99"
+			document.write(num_P.toPrecision(3)); //"99.0"
+		</code>
+	</pre>
+	<p>类型检测</p>
+	<pre>
+		<code>
+			var numberObject = new Number(30);
+			var numberValue = 30;
+			document.write(typeof numberObject); //"Object"
+			document.write(typeof numberValue); //"number"
+			document.write(numberObject instanceof Number); //"true"
+			document.write(numberValue instanceof Number); //"false"
+		</code>
+	</pre>
+	
+	<h4>String类型</h4>
+	<p>String类型提供了许多方法：1.字符方法</p>
+	<p>charAt()和charCodeAt()，这个两个方法都接受一个参数，即基于0的字符位置。其中charAt()方法以单字符的形式返回给定位置的那个字符。（还可以使用[]）</p>
+	<pre>
+		<code>
+			var stringCharAt = "hello world";
+			document.write(stringCharAt.charAt(2)); //"l"
+
+			var stringCharCodeAt = "hello world";
+			document.write(stringCharCodeAt[2]); //"108"
+		</code>	
+	</pre>
+	<p>charCodeAt()返回对应字符转换后的编码。</p>
+	<pre>
+		<code>
+			var stringCharCodeAt = "hello world";
+			document.write(stringCharCodeAt.charCodeAt(2)); //"108"
+		</code>
+	</pre>
+	<p>2.字符串操作方法</p>
+	<p>第一个就是concat()方法，用一个将一个或多个字符串拼接起来得到新的字符串。</p>
+	<pre>
+		<code>
+			var stringConcat = "Hello";
+			var result = stringConcat.concat("world");
+			document.write(result); //Hello world
+			document.write(stringConcat); //Hello
+		</code>
+	</pre>
+	<p>提供了三个创建新字符串的方法：slice()、substr()、substring()。这三个方法都会返回备操作字符串的一个字符串，第一个参数指定字符串的开始的位置，第二个参数表示字符串到哪里结束。slice() 和 substring() 的第二个参数指定的是子字符串最后一个字符后面的位置。而 substr() 的第二个参数指定的则是返回的字符个数。如果没有给这些方法传递第二个参数，则将字符串的长度作为结束位置。与 concat() 方法一样，slice()、substr() 和 substring()也不会修改字符串本身的值，它们只是返回一个基本类型的字符串值，对原始字符串没有任何影响。</p>
+	<pre>
+		<code>
+			var stringValue = "Hello world";
+			document.write(stringValue.slice(3)); //"lo world"
+			document.write(stringValue.substr(3)); //"lo world"
+			document.write(stringValue.substring(3)); //"lo world"
+			document.write(stringValue.slice(3,7)); //"lo w"
+			document.write(stringValue.substr(3,7)); //"li worl"
+			document.write(stringValue.substring(3,7)); //"li w"
+		</code>
+	</pre>
+	<p>当参数为负数时，slice()会将传入的负值与字符串的长度相加，substr()会将第一个参数的负值与字符串长度相加，第二个参数的负值转换为0，substring()会将负值转换为0.</p>
+	<pre>
+		<code>
+			var stringValue = "Hello world";
+			document.write(stringValue.slice(-3)); //"rld" （7）
+			document.write(stringValue.substr(-3)); //"rld" （7）
+			document.write(stringValue.substring(-3)); //"Hello world" （0）
+			document.write(stringValue.slice(3,-4)); //"lo w" （3,7）
+			document.write(stringValue.substr(3,-4)); //" " （3,0）
+			document.write(stringValue.substring(3,-4)); //"Hel" （0,3）会从较小的位置开始
+		</code>
+	</pre>
+
+	<p>输出：</p>
+	<script>
+		var s1 = "some text";
+		s1.color = "red";
+		document.write(s1.color + "<br>");
+
+		var value = 25; 
+		var number = new Number(value);
+		document.write(typeof number + "\n");
+		document.write(number instanceof Number);
+
+		var string = new String("some text");
+		document.write("\n" + typeof string + "\n");
+		document.write(string instanceof String); 
+
+		var boolean = new Boolean(false);
+		document.write("\n" + typeof boolean + "\n");
+		document.write(boolean instanceof Boolean);
+
+		var falseObject = new Boolean(false);
+		var result = falseObject && true;
+		document.write("<br>" + result + "\n");
+
+		var falseValue = false;
+		result = falseValue && true;
+		document.write(result + "\n");
+
+		document.write(typeof falseObject + "\n"); 
+		document.write(typeof falseValue + "\n"); 
+		document.write(falseObject instanceof Boolean); 
+		document.write("\n" + falseValue instanceof Boolean);
+
+		var number = Number(20);
+		document.write("<br>" + number.valueOf() + "\n");
+		document.write(number.toLocaleString() + "\n");
+		document.write(number.toString() + "<br>");
+
+		var num = 10;
+		document.write(num.toString() + "\n");
+		document.write(num.toString(2) + "\n");
+		document.write(num.toString(8) + "\n");
+		document.write(num.toString(10) + "\n");
+		document.write(num.toString(16) + "\n");
+
+		var num_x = 10;
+		document.write(num_x.toFixed(2) + "\n");
+		
+		var num_x = 10.005;
+		document.write(num_x.toFixed(2) + "\n");
+
+		var num_x = 20;
+		document.write(num_x.toExponential(1) + "<br>"); 
+
+		var num_P = 99;
+		document.write(num_P.toPrecision(1) + "\n"); 
+		document.write(num_P.toPrecision(2) + "\n"); 
+		document.write(num_P.toPrecision(3) + "<br>");
+
+		var numberObject = new Number(30);
+		var numberValue = 30;
+		document.write(typeof numberObject + "\n");
+		document.write(typeof numberValue + "\n");
+		document.write(numberObject instanceof Number);
+		document.write("\n" + numberValue instanceof Number);
+
+		var stringCharAt = "hello world";
+		document.write("<br>" + stringCharAt.charAt(2) + "\n");
+
+		var stringCharCodeAt = "hello world";
+		document.write(stringCharCodeAt[2] + "\n");
+
+		var stringCharCodeAt = "hello world";
+		document.write(stringCharCodeAt.charCodeAt(2) + "<br>");
+
+		var stringConcat = "Hello" + "\n";
+		var result = stringConcat.concat("world", "!") + "\n";
+		document.write(result + "\n");
+		document.write(stringConcat + "<br>");
+
+		var stringValue = "Hello world";
+		document.write(stringValue.slice(3) + "\n"); 
+		document.write(stringValue.substr(3) + "\n");
+		document.write(stringValue.substring(3) + "\n");
+		document.write(stringValue.slice(3,7) + "\n");
+		document.write(stringValue.substr(3,7) + "\n");
+		document.write(stringValue.substring(3,7) + "<br>")
+
+		var stringValue = "Hello world";
+		document.write(stringValue.slice(-3) + "\n");
+		document.write(stringValue.substr(-3) + "\n");
+		document.write(stringValue.substring(-3) + "\n");
+		document.write(stringValue.slice(3,-4) + "\n");
+		document.write(stringValue.substr(3,-4) + "\n"); 
+		document.write(stringValue.substring(3,-4) + "<br>");
+	</script>
+ </body>
+</html>
