@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本概念</title>
+</head>
+<body>
+    <h1>区分大小写</h1>
+    <p>HTML和CSS中不区分大小写</p>
+    <p>带下划线的名称，取值一定要小写</p>
+    <button id="btn1" style="width: 50px; height: 30px; background-color: brown; border: 2px solid black">click1</button>
+    <button style="width: 50px; height: 30px; background-color: brown; border: 2px solid black" Onclick="test()">click2</button>
+    <script>
+        var btn = document.getElementById("btn1");
+        btn.onclick = function () {
+            alert("hello world!");
+        };
+        function test() {
+            alert("不区分大小写");
+        }
+    </script>
+    <h1>标识符</h1>
+    <p>标识符的第一个字符必须是字母、下划线或一个美元符号</p>
+    <h1>注释</h1>
+    <p>单行注释 //</p>
+    <p>多行注释 /**/</p>
+    <h1>严格模式</h1>
+    <button style="width: 50px; height: 30px; background-color: brown; border: 2px solid black" onclick="test1()">strict</button>
+    <script>
+        'use strict';
+        // 严格模式
+        function test1() {
+            alert("严格模式");
+        }
+    </script>
+    <h1>变量</h1>
+    <p>初始化变量并不会把它标记为字符串类型，初始化的过程就是给变量赋一个值。</p>
+    <p>使用var是局部变量，不使用是全局变量</p>
+</body>
+</html>

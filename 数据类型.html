@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据类型</title>
+</head>
+<body>
+    <!--数据类型包括：Undefined Null Boolean Number String Object-->
+    <h1>typeof操作符(所有的返回值的都是字符串)</h1>
+    <p>
+        Undefined-未定义<br>
+        boolean-布尔值<br>
+        Number-数字<br>
+        String-字符串<br>
+        Object-对象 Null(本质是由一组无序的名值对组成的。)<br>
+        Function-函数<br>
+    </p>
+    <script>
+        var a2  = "abcd";
+        a2.len = 4; //临时变量
+        document.write("<br>" + a2.len);
+        a2 = a2.toUpperCase();// 未保存 需要赋值
+        alert(a2);
+        var a = true;
+        var b = true;
+        alert(typeof a == b);
+        var a1 = true;
+        var b1 = true;
+        alert(typeof (a1 == b1));
+    </script>
+    <h1>Undefined和Null</h1>
+    <script>
+        var message;
+        var age;
+        document.write(message == undefined);
+        document.write("<br>" + age + "<br>");
+        document.write(typeof message + "<br>");
+        document.write(typeof age + "<br>");
+        call = null;
+        document.write(typeof call + "<br>");
+        document.write(null == undefined);
+    </script>
+    <h1>Boolean</h1>
+    <p>转换为false的六个值</p>
+    <script>
+        document.write(Boolean(undefined) + "<br>");
+        document.write(Boolean(null) + "<br>");
+        document.write(Boolean(0) + "<br>");
+        document.write(Boolean(-0) + "<br>");
+        document.write(Boolean(NaN) + "<br>");
+        document.write(Boolean( ) + "<br>");
+    </script>
+    <h1>Object</h1>
+    <p>ECMAScript中的对象其实就是一组数据和功能的集合。对象的创建可以通过new操作符后跟创建的对象类型的名称来创建。而创建Object类型的实例并为其添加属性和方法，就可以创建自定义对象。</p>
+    <pre>
+        var o = new Object();
+    </pre>
+    <p>任何对象转换成布尔类型都为true</p>
+</body>
+</html>

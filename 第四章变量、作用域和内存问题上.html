@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>第四章 变量、作用域和内存问题</title>
+  <style type="text/css" media="screen">
+  	body {
+    	background-color: #242424;
+    	color: #1E90FF; 
+  	}
+  </style>
+ </head>
+ <body>
+	<h3>基本类型和引用类型</h3>
+	<p>ECMAScript变量包括两种数据类型的值：基本类型值和引用类型值。<b>基本类型值</b>指的是简单的数据段，而<b>引用类型值</b>指那些可能由多个值构成的对象。基本类型常见的五种基本类型：Undefined、Null、Number、String、Boolean。是按值访问的，可以操作保存在变量中的实际值。引用类型的值是保存在内存中的对象，按引用访问的。</p>
+	<h3>创建变量</h3>
+	<p>1.创建了一个名字</p>
+	<p>2.设置了一个作用域</p>
+	<p>3.预处理被提升到最顶部</p>
+	<pre>
+		<code>
+			var a = 123;
+		</code>
+		<code>
+			var a = 123;
+			a.age = 123;
+			document.write(a.age); //undefined
+		</code>
+		<code>
+			var person = new Object();
+			person.name = "zsw";
+			document.write(person.name); //"zsw"
+		</code>
+	</pre>
+	<h3>复制变量值</h3>
+	<p>如果一个变量向另一个变量复制基本类型的值，会在变量对象上创建一个新值，然后把该值复制到为新变量分配的位置上。</p>
+	<pre>
+		<code>
+			var num1 = 5;
+			var num2 = num1;
+			document.write(num2); // 5
+		</code>
+	</pre>
+	<p>当一个变量向另一个变量复制引用类型的值时，同样也会将存储在变量中的值复制放到为新变量分配的空间中。不同的是，这个值的副本实际上是一个指针，而这个指针指向存储在堆中的变量。复制操作结束后，两个变量实际上将引用同一个对象。</p>
+	<pre>
+		<code>
+			var obj1 = new Object();
+			var obj2 = obj1;
+			obj1.name = "zsw";
+			document.write(obj2.name); //"zsw"
+		</code>
+	</pre>
+	<h3>传递参数</h3>
+	<p>ECMAScript中所有函数的参数都是按值传递的。把函数外部的值复制给函数内部的参数，等于把值从一个变量复制到另一个变量一样。</p>
+	<p>在向参数传递基本类型时，被传递的值会被复制给一个局部变量。在向参数传递引用类型时，会把这个值在内存中的地址复制给一个局部变量，因此这个局部变量的变化会反映在函数的外部。</p>
+	<pre>
+		<code>
+			function addnum(num) {
+				num += 10;
+				return num;
+			}
+			var count = 20;
+			var result = addnum(count);
+			document.write(result); //30
+			document.write(count); //20
+		</code>
+	</pre>
+	<pre>
+		<code>
+			function setName(obj3) {
+				obj3.name = "zsw";
+			}
+			var person1 = new Object();
+			setName(person1);
+			document.write(person.name); //zsw
+
+			function setName(obj3) {
+				obj3.name = "zsw";
+				var obj3 = new Object();
+				obj3.name = "wsz";
+			}
+			var person1 = new Object();
+			setName(person1);
+			document.write(person.name); //zsw
+		</code>
+	</pre>
+	<h3>检测类型</h3>
+	<p>基本类型的值用typeof检测</p>
+	<pre>
+		<code>
+    		var a = "zsw";
+    		var b = true;
+    		var c = 22;
+    		var d;
+    		var e = null;
+    		var f = new Object();
+
+    		document.write(typeof a); //string
+    		document.write(typeof b); //boolean
+    		document.write(typeof c); //number
+    		document.write(typeof d); //undefined
+    		document.write(typeof e); //object
+    		document.write(typeof f); //object 
+		</code>
+	</pre>
+	<p>引用类型的值用instanceof检测</p>
+	<p>result = variable instanceof constructor 检测数据 + 数据类型</p>
+	<pre>
+		<code>
+    		var person = new Object();
+    		document.write(person instanceof Object); //true
+
+    		var color = {};
+    		document.write(color instanceof Array); //true
+
+    		var pattern = /\[bc\]at/i;
+    		document.write(pattern instanceof RegExp); //true
+		</code>			
+	</pre>	
+	<br>
+	<p>输出：</p>
+	<script>
+		var a = 123;
+		a.age = 123;
+		document.write(a.age + "\n");
+
+		var person = new Object();
+		person.name = "zsw";
+		document.write(person.name + "\n"); 
+
+		var num1 = 5;
+		var num2 = num1;
+		document.write(num2 + "\n");
+		if (num1 == num2) {
+			document.write("true" + "\n");
+		}else {
+			document.write("false" + "\n");
+		}
+		if (num1 === num2) {
+			document.write("true" + "\n");
+		}else {
+			document.write("false" + "\n");
+		}
+		
+		var num1 = 6;
+		document.write(num2 + "\n");
+		if (num1 == num2) {
+			document.write("true" + "\n");
+		}else {
+			document.write("false" + "\n");
+		}
+		if (num1 === num2) {
+			document.write("true" + "\n");
+		}else {
+			document.write("false" + "\n");
+		}
+
+		var obj1 = new Object();
+			var obj2 = obj1;
+			obj1.name = "zsw";
+			document.write(obj2.name + "\n");
+		if (obj2.name = "wsz")
+		{
+			document.write(obj1.name + "\n");
+		}
+
+		function addnum(num) {
+				num += 10;
+				return num;
+		}
+		var count = 20;
+		var result = addnum(count);
+		document.write(result + "\n");
+		document.write(count + "\n") ;
+
+		function setName(obj3) {
+			obj3.name = "zsw";
+		}
+		var person1 = new Object();
+		setName(person1);
+		document.write(person.name + "\n");
+
+		function setName(obj3) {
+			obj3.name = "zsw";
+			var obj3 = new Object();
+			obj3.name = "wsz";
+		}
+		var person1 = new Object();
+		setName(person1);
+		document.write(person.name + "\n");
+
+		function setName(obj3) {
+			obj3.name = "zsw";
+			obj3 = new Object();
+			obj3.name = "wsz";
+		}
+		var person1 = new Object();
+		setName(person1);
+		document.write(person.name + "\n");
+
+		var a = "zsw";
+    	var b = true;
+    	var c = 22;
+    	var d;
+    	var e = null;
+    	var f = new Object();
+
+    	document.write(typeof a + "\n");
+    	document.write(typeof b + "\n");
+    	document.write(typeof c + "\n");
+    	document.write(typeof d + "\n");
+    	document.write(typeof e + "\n");
+    	document.write(typeof f + "\n");
+
+    	var person = new Object();
+    	document.write(person instanceof Object);
+
+    	var color = [1,2,3];
+    	document.write(color instanceof Array);
+
+    	var pattern = /\[bc\]at/i;
+    	document.write(pattern instanceof RegExp);
+	</script>
+ </body>
+</html>

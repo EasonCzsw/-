@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>第四章变量、作用域和内存问题(2)</title>
+	<link rel="stylesheet" href="">
+	<style type="text/css" media="screen">
+		body {
+    		background-color: #242424;
+    		color: #1E90FF;
+  		}
+  		img {
+  			margin: 0 200px;
+  		}
+	</style>
+</head>
+<body>
+	<h3>执行环境和作用域</h3>
+	<p>执行环境是js中一个重要的概念，作用域是计算机对值进行保存和读取的规则。执行环境定义了变量或函数有权访问的其他数据，决定了他们各自的行为。每个执行环境都有一个与之关联的<b>变量对象</b>，环境中定义的所有变量和函数都保存在这个对象中。</p>
+	<p>全局执行环境是最外围的一个执行环境。全局执行环境被认为是window对象，因此所有全局变量和函数都是作为window对象的属性和方法创建的。</p>
+	<p>每个函数都有自己的执行环境，当执行流进入一个函数时，函数的环境就会被推入一个环境栈中，而在函数执行之后，栈将其环境弹出，把控制权返还给之前的执行环境。</p>
+	<p>当代码在一个环境中执行时，会创建变量对象的一个<b>作用域链</b>。作用域链的用途，是保证对执行环境有权访问的所有变量和函数的有序访问。作用域链的前端，始终都是当前执行的代码所在环境的变量对象。如果这个环境是函数，则将其<b>活动对象</b>作为变量对象。活动对象在最开始时只包含一个变量，即argument对象。作用域链中的下一个变量对象来自包含环境，而下一个变量对象来自下一个包含环境。一直延续到全局执行环境；全局执行环境的变量对象始终都是作用域链中的最后一个对象。</p>
+	<p>标识符解析是沿着作用域链一级一级地搜索标识符的过程。搜索过程始终从作用域链的前端开始，然后逐级的向后回溯，直到找到标识符为止。</p>
+	<pre>
+		<code>
+			var color = blue;
+			function changeColor() {
+				if (color === blue) {
+				color = red;
+				} else {
+					color = blue;
+				}
+			}
+			changeColor();
+			document.write("Color is now" + color); //Color is now red
+		</code>
+	</pre>
+	<pre>
+		<code>
+			var name = "zsw";
+			outer();
+			function outer() {
+				var name = "outer";
+				inner();
+				function inner() {
+					var name = "inner";
+					console.log(name);
+				}
+			console.log(name);
+			}
+		</code>
+	</pre>
+	<p>在局部作用域中定义变量可以在局部环境与全局变量互换使用。</p>
+	<pre>
+		<code>
+			var color = "blue";
+
+			function changeColor() {
+				var anotherColor = "red";
+				function swapColors() {
+					var temColors = anotherColor;
+					anotherColor = color;
+					color = temColors;
+				} 
+			}
+		</code>
+	</pre>
+	<p>window环境 → color环境(1) → changeColor环境(1) → anotherColors环境(1.1) → swapColors环境(1.1) → temColors环境(1.1.1)</p>
+	<p>内部环境可以通过作用域链访问外部环境，反之不可以；每个环境都可以向上搜索，不可以向下。</p>
+
+	<h3>延长作作用域链</h3>
+	<p>在两种情况下会发生作用域链延长的情况：① try-catch 语句的 catch块； ② with 语句； with会指定的对象添加到作用域链中，catch语句会创建一个新的变量对象，其中包含的是被抛出的错误对象的声明。</p>
+	<pre>
+		<code>
+			function buildUrl() {
+				var qs = "?debug=true";
+
+				with(location) { //其变量对象中就包含了location对象的所有属性和方法
+					var url = href + qs; //url变量仍在buildUrl()环境的变量对象中
+				}
+				return url; //因此能返回，没有报错
+}
+			}
+		</code>
+	</pre>
+	<h3>没有块级作用域</h3>
+	<p>javascript中没有块级作用域，在其他语言中通常以花括号封闭代码。</p>
+	<pre>
+		<code>
+			if (true) {
+				var color = "blue";	
+			}
+			alert(color); //blue js中没有块级作用域
+		</code>
+	</pre>
+	<pre>
+		<code>
+			for (var i = 0; i < 10; i++;) {
+				doSomething(i);
+			}
+			document.write(i); //10 js中没有块级作用域
+		</code>
+	</pre>
+	<h4>1.声明变量</h4>
+	<p>使用var声明的变量会自动被添加到最接近的环境中，在函数内部，最接近的环境就是函数的局部环境。如果没有使用var声明，该变量会自动添加到全局环境。</p>
+	<pre>
+		<code>
+			function add(num1,num2) {
+				var sum = num1 + num2; //去掉var 改成全局变量
+				return sum;
+			}
+			var result = add(10, 20); //30
+			document.write(sum); 
+		</code>
+	</pre>
+	<h4>2.查询标识符</h4>
+	<p>当某个环境为了读取或写入而引入一个标识符时，必须通过搜索来确定标识符实际代表什么。</p>
+	<pre>
+		<code>
+			var color = "blue";
+			function getColor() {
+				return color;
+			}
+			document.write(getColor()); //blue
+		</code>
+	</pre>
+	<img src="image/1.jpg">
+	<pre>
+		<code>
+			var color = "blue";
+			function getColor() {
+			    var color = "red";
+				return color;
+			}
+			document.write(getColor()); //red
+		</code>
+	</pre>
+	
+	<p>输出：</p>
+	<script type="text/javascript">
+		var color = "blue";
+		function changeColor() {
+			if (color === "blue") {
+				color = "red";
+			} else {
+				color = "blue";
+			}
+		}
+		changeColor();
+		document.write("Color is now" + "\n" + color + "\n"); 
+
+		var name = "zsw";
+		outer();
+		function outer() {
+			var name = "outer";
+			inner();
+			function inner() {
+				var name = "inner";
+				document.write(name + "\n");
+			}
+		document.write(name + "\n");
+		}
+		
+		var color_3 = "blue";
+
+		function changeColor() {
+			var anotherColor = "red";
+			function swapColors() {
+				var temColors = anotherColor;
+				anotherColor = color_3;
+				color_3 = temColors;
+			}
+		}
+
+		function buildUrl() {
+			var qs = "?debug=true";
+
+			with(location) {
+				var url = href + qs;
+			}
+			return url;
+		}
+
+		if (true) {
+				var color_4 = "blue";	
+		}
+		document.write(color_4 + "\n");
+
+		/*
+		for (var i = 0; i < 10; i++) {
+			doSomething(i);
+		}
+		document.write(i);
+		*/
+	
+		function add(num1,num2){
+    		var sum = num1 +num2 ;
+    		return sum;
+		}
+		var result = add(10,20); //30
+		alert(sum);  
+
+		function add_a(num1_a,num2_a) {
+			sum_a = num1_a + num2_a;
+			return sum_a;
+		}
+		var result_a = add_a(10, 20); //30 
+		document.write(sum_a + "\n"); 
+
+		var color_b = "blue";
+		function getColor_b() {
+			return color_b;
+		}	
+		document.write(getColor_b() + "\n");
+
+		var color_c = "blue";
+		function getColor_c() {
+		var color_c = "red";
+		return color_c;
+		}
+		document.write(getColor_c() + "\n");
+	</script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>第五章引用类型</title>
+<style type="text/css" media="screen">
+  	body {
+    	background-color: #242424;
+    	color: #1E90FF; 
+  	}
+</style>
+</head>
+<body>
+	<p>位置方法</p>
+	<p>indexOf()方法和lastIndexOf()方法 两个方法都接受两个参数：要查找的项和表示查找起点索引。indexOf()从数组的开头查找，lastIndexOf()从数组的末尾查找。返回要查找的项在数组的位置。</p>
+	<pre>
+		<code>
+			var number = [1,2,3,4,5,4,3,2,1];
+			document.write(number.indexOf(4)); //3
+			document.write(number.lastIndexOf(4)); //5
+			document.write(number.indexOf(4,4)); //5
+			document.write(number.lastIndexOf(4,4)); //3
+			var person = {name: "zsw"};
+			var people = [{ name: "wsz"}];
+			var morePeople = [person];
+			document.write(people.indexOf(person)); //-1
+			document.write(morePeople.indexOf(person)); //0
+		</code>
+	</pre>
+	<p>迭代方法</p>
+	<p>五个迭代方法：every()、filter()、forEach()、map()、some() 每个方法都接受两个参数：要在每一项上运行的函数和运行该函数的作用域对象——影响this。传入这些方法的函数会接受三个参数：数组的项、该项在数组中的位置和数组对象本身。</p>
+	<p>every():对数组中的每一项运行给定函数，如果该函数返回true，则返回true。</p>
+	<p>filter():对数组中的每一项运行给定函数，返回该函数会返回true的项组成的数组。</p>
+	<p>forEach():对数组中的每一项运行给定函数，这个方法没有返回值。</p>
+	<p>map():对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。</p>
+	<p>some():对数组中的每一项运行给定函数，如果该函数对任一一项返回true，则返回true。</p>
+	<pre>
+		<code>
+			var numbers = [1,2,3,4,5,4,3,2,1];
+			var everyResult = numbers.every(function(item, index,array) {
+				rerurn (item > 2);
+			});
+			document.write(everyResult); //false
+			var someResult = numbers.some(function(item,index,array) {
+				return (item > 2);
+			});
+			document.write(someResult); //true
+			var filterResult = numbers.filter(function(item,index,array) {
+				return (item > 2);
+			});
+			document.write(filterResult); //3,4,5,4,3
+			var mapResult = numbers.map(function(item,index,array) {
+				return (item * 2);
+			});
+			document.write(mapResult); //[2,4,6,8,10,8,6,4,2]
+		</code>
+	</pre>
+	<p>归并方法</p>
+	<p>reduce()和reduceRight()方法 reduce()方法从数组的第一项开始，逐个遍历到最后。而reduceRight()相反。两个方法都接受两个参数：一个在每一项上调用的函数和作为归并基础的初始值。传给函数的四个参数：前一个值、当前值、项的索引、数组对象。</p>
+	<pre>
+		<code>
+			var value = [1,2,3,4,5];
+			var sum = value.reduce(function (prev, cur, index, array) {
+				return prev + cur;
+			});
+			document.write(sum); //15
+
+			var sum_a = value.reduceRight(function (prev, cur, index, array) {
+				return prev + cur;
+			});
+			document.write(sum_a); //15
+		</code>
+	</pre>
+	<h3>Date 类型</h3>
+	<p>Date.parse()方法接收一个表示日期的字符串参数。</p>
+	<pre>
+		<code>
+			var someDate = new Date(Date.parse("May 25, 2004"));
+		</code>
+	</pre>
+	<p>Date.UTC()方法同样也返回表示日期的毫秒数，参数是：年份、基于0的月份、月中的哪一天、小时数、分钟、秒以及毫秒数。</p>
+	<pre>
+		<code>
+			var y2k = new Date(Date.UTC(2000, 0));
+			// GMT时间2000年1月1日午夜零时。
+
+			var allFives = new Date(Date.UTC(2005, 4, 5, 17, 55, 55));
+			// GMT时间2005年5月5日下午5:55:55。
+		</code>
+	</pre>
+	<h3>RegExp 类型</h3>
+	<p></p>
+
+	<p>输出：</p>
+	<script type="text/javascript">
+		var number = [1,2,3,4,5,4,3,2,1];
+		document.write(number.indexOf(4) + "\n");
+		document.write(number.lastIndexOf(4) + "\n");
+		document.write(number.indexOf(4,4) + "\n");
+		document.write(number.lastIndexOf(4,4) + "\n");
+		var person = {name: "zsw"};
+		var people = [{ name: "wsz"}];
+		var morePeople = [person];
+		document.write(people.indexOf(person) + "\n");
+		document.write(morePeople.indexOf(person) + "\n");
+
+		var numbers = [1,2,3,4,5,4,3,2,1];
+		var everyResult = numbers.every(function(item, index, array) {
+			return (item > 2);
+		});
+		document.write(everyResult + "\n");
+		var someResult = numbers.some(function(item,index,array) {
+			return (item > 2);
+		});
+		document.write(someResult + "\n");
+		var filterResult = numbers.filter(function(item,index,array) {
+			return (item > 2);
+		});
+		document.write(filterResult + "\n");
+		var mapResult = numbers.map(function(item,index,array) {
+			return (item * 2);
+		});
+		document.write(mapResult + "\n");
+
+		var value = [1,2,3,4,5];
+		var sum = value.reduce(function (prev, cur, index, array) {
+			return prev + cur;
+		});
+		document.write(sum + "\n");
+		var sum_a = value.reduceRight(function (prev, cur, index, array) {
+			return prev + cur;
+		});
+		document.write(sum_a + "\n");
+
+		var someDate = new Date(Date.parse("May 25, 2004"));
+		document.write(someDate + "\n");
+
+		var y2k = new Date(Date.UTC(2000, 0));
+		document.write(y2k + "\n");
+		var allFives = new Date(Date.UTC(2005, 4, 5, 17, 55, 55));
+		document.write(allFives + "\n");
+	</script>
+<body>
+<html>
