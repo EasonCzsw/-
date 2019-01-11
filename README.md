@@ -14,3 +14,6 @@ var quickSort = function(arr) {
 　　}
 　　return quickSort(left).concat([pivot], quickSort(right));
 };
+
+
+http://www.cnblogs.com/TomXu/ 汤姆大叔
