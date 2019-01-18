@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>css滑动切换</title>
+  <style>
+	.contain {
+        position: relative; 
+		/*相对定位*/
+		margin: auto;
+		width: 600px;
+		height: 200px;
+		text-align: center;
+		font-family: Arial;
+		color: #FFF;
+		overflow:hidden;
+		/*溢出隐藏*/
+	}
+	.contain ul {
+		margin: 10px 0;
+		padding: 0;
+		width: 1800px;
+		transition: all 0.5s;
+		/*延迟0.5s滑动*/
+	}
+	.contain li {
+		float: left;
+		width: 600px;
+		height: 200px;
+		list-style: none;
+		line-height: 200px;
+		font-size: 36px;
+	}
+	
+	.sildInput-1{
+		background: #9fa8ef;
+	}
+	 
+	.sildInput-2{
+		background: #ef9fb1;
+	}
+	 
+	 .sildInput-3{
+		background: #9fefc3;
+	}
+
+	.label1 {
+		position: absolute;
+		bottom: 10px;
+		left: 0;
+		width: 20px;
+		height: 20px;
+		margin: 0 10px;
+		line-height: 20px;
+		color: #FFF;
+		background: #000;
+		cursor: pointer;
+	}/*用于调整单选框的属性以及位置*/
+	#Input1:checked~ul{ margin-left: 0;}/*第一张点击切换*/
+	#Input1:checked~.label1{ background: #535353;}/*点击后改变单选框颜色*/
+	
+	.label2{
+		position: absolute;
+		bottom: 10px;
+		left: 30px;
+		width: 20px;
+		height: 20px;
+		margin: 0 10px;
+		line-height: 20px;
+		color: #FFF;
+		background: #000;
+		cursor: pointer;
+	}/*用于调整单选框的属性以及位置*/
+	#Input2:checked~ul{ margin-left: -600px;}/*第二张点击切换*/
+	#Input2:checked~.label2{ background: #535353;}/*点击后改变单选框颜色*/
+	
+	.label3{
+		position: absolute;
+		bottom: 10px;
+		left: 60px;
+		width: 20px;
+		height: 20px;
+		margin: 0 10px;
+		line-height: 20px;
+		color: #FFF;
+		background: #000;
+		cursor: pointer;
+	}/*用于调整单选框的属性以及位置*/
+	#Input3:checked~ul{ margin-left: -1200px;}/*第三张点击切换*/
+	#Input3:checked~.label3{ background: #535353;}/*点击后改变单选框颜色*/
+
+	/*需要checkbox元素的伪类选择器:checked就可以检测到元素的checked状态，通过label标签来触发checkbox的unchecked 和checked 状态。*/
+  </style>
+ </head>
+ <body>
+	<div class="contain">
+		<input type="radio" name="sildeInput" value="0" id="Input1" hidden>
+		<label class="label1" for="Input1">1</label>
+		<input type="radio" name="sildeInput" value="1" id="Input2" hidden>
+		<label class="label2" for="Input2">2</label>
+		<input type="radio" name="sildeInput" value="1" id="Input3" hidden>
+		<label class="label3" for="Input3">3</label>
+		<ul>
+			<li class="sildInput-1">one-点击切换</li>
+			<li class="sildInput-2">two-点击切换</li>
+			<li class="sildInput-3">three-点击切换</li>
+		</ul>
+	</div>
+ </body>
+</html>
