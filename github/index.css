@@ -1,0 +1,401 @@
+ CSS Document */
+/*------------------------base------------------------*/
+html, body, div, span, applet, object, iframe, h1, h2, h3,
+h4, h5, h6, p, blockquote, pre, a, abbr, acronym,
+address, big, cite, code, del, dfn, em, font, img, ins,
+kbd, q, s, samp, small, strike, strong, sub, sup, tt,
+var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
+}
+:focus { outline: 0;}
+a, a:link, a:visited, a:hover, a:active{text-decoration:none;}
+table { border-collapse: separate;border-spacing: 0;}
+th, td {text-align: left; font-weight: normal;}
+img, iframe {border: none; text-decoration:none;}
+ol, ul {list-style: none;}
+input, textarea, select, button {font-size: 100%;font-family: inherit;}
+select {margin: inherit;}
+hr {margin: 0;padding: 0;border: 0;color: #000;background-color: #000;height: 1px}
+body{
+    font-family:"微软雅黑",Verdana, Geneva, sans-serif;
+    font-size:12px;
+    color:#666;
+}
+div, h1, h2, h3, h4, p, form, label, textarea, img, span{
+    margin:0; padding:0; border:0;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+input{ margin:0; padding:0;}
+
+ul{
+    margin:0;
+    padding:0;
+    list-style-type:none;
+}
+a,a:link{
+    color:#333;
+    text-decoration:none;
+}
+a:hover{    
+    text-decoration:none;
+    color: #d8b056!important;
+}
+.clearfix:after{
+    content:".";display: block;height: 0;clear: both;visibility: hidden;font-size:0;line-height:0;
+}
+.clearfix{
+    *zoom: 1;
+}
+/*Nicolas Gallagher 大湿提出*/
+/*.cf:before,.cf:after {
+    content:"";
+    display:table;
+}
+.cf:after { clear:both; }*//* For IE 6/7 (trigger hasLayout) *//*
+.cf { zoom:1; }*/
+/*解决ul清楚浮动把相邻的浮动也给包裹了*/
+/*
+.clearfix{
+    *zoom: 1;
+    display:table;
+}
+*/
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+/* header start */
+.header {
+    position: relative;
+    width: 100%;
+    background-color: #000;
+    z-index: 22;
+}
+
+.headerTop {
+    position: fixed;
+    width: 100%;
+    height: 40px;
+    background-color: #1c232b;
+    min-width: 1200px;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+.headerTop a {
+    color: white;
+}
+/* headerTop strat */
+
+/* left */
+
+.headerLeft{
+    margin-left: 30px;
+}
+.headerLogo,.headerLan,.headerSound,.headerSpan,.headerService,.headerBrand,.headerForm,.headerConsult,.headerAsideHide,.headerServiceInput,.headerAsideHide {
+    position: relative;
+    float: left;
+    height: 40px;
+    padding: 0 5px;
+    margin-right: 10px;
+}
+.headerLogo>a{
+    display: block;
+    margin-top: 7px;
+}
+ .headerLan a,.headerSound a,.headerSpan span,.headerService a,.headerBrand a,.headerForm a,.headerConsult a,.headerServiceInput a,.headerAsideHide a{
+    display: block;
+    margin-top: 10px;
+    font-size: 12px;
+ }
+.headerLan .ch em {
+    display: inline-block;
+    background: url(../images/vi_icon2.png) no-repeat;
+    background-position: -11px 0;
+    width: 18px;
+    height: 12px;
+    margin-right: 10px;
+    vertical-align: middle;
+
+}
+.headerLogo>a>i,.headerLan>a>i{
+    display: inline-block;
+    background: url(../images/vi_icon2.png) no-repeat;
+    width: 6px;
+    height: 4px;
+    vertical-align: top;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.headerSound a i {
+    display: inline-block;
+    background: url(../images/yuntu.png) no-repeat;
+    width: 13px;
+    height: 13px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.headerSound a:hover i {
+    background: url(../images/yuntu-hover.png) no-repeat;
+}
+/* left end */
+
+
+/* lefthide start*/
+.headerLogoHide {
+    position: absolute;
+    display: none;
+    width: 100%;
+    left: 0;
+    top: 40px;
+    background-color: #000;
+}
+
+.headerLogoHide > ul {
+    padding: 10px 0;
+    margin-top: -10px;
+}
+
+.headerLogoHide ul li a {
+    display: block;
+    height: 30px;
+    font-size: 12px;
+    padding-left: 10px;
+    line-height: 30px;
+}
+
+.Logefz {
+    display: inline-block;
+    background: url(../images/icons.png) no-repeat;
+    background-position: -58px -417px;
+    width: 13px;
+    height: 14px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.headerLogoHide ul li a:hover .Logefz {
+    background: url(../images/icons.png) no-repeat;
+    background-position: -79px -417px;
+}
+
+.Logexb {
+    display: inline-block;
+    background: url(../images/icons.png) no-repeat;
+    background-position: 0 -205px;
+    width: 13px;
+    height: 14px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.headerLogoHide ul li a:hover .Logexb {
+    background: url(../images/icons.png) no-repeat;
+    background-position: 0 -221px;
+}
+
+.Logexz {
+    display: inline-block;
+    background: url(../images/icons.png) no-repeat;
+    background-position: -16px -205px;
+    width: 13px;
+    height: 14px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.headerLogoHide ul li a:hover .Logexz {
+    background: url(../images/icons.png) no-repeat;
+    background-position: -16px -221px;
+}
+
+.Logess {
+    display: inline-block;
+    background: url(../images/icons.png) no-repeat;
+    background-position: -35px -205px;
+    width: 13px;
+    height: 14px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.headerLogoHide ul li a:hover .Logess {
+     background: url(../images/icons.png) no-repeat;
+    background-position: -35px -221px;
+}
+
+.Logejf {
+    display: inline-block;
+    background: url(../images/icons.png) no-repeat;
+    background-position: -54px -205px;
+    width: 13px;
+    height: 14px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.headerLogoHide ul li a:hover .Logejf {
+    background: url(../images/icons.png) no-repeat;
+    background-position: -54px -221px;
+}
+
+.Logeyt {
+    display: inline-block;
+    background: url(../images/icons.png) no-repeat;
+    background-position: -71px -205px;
+    width: 13px;
+    height: 14px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.headerLogoHide ul li a:hover .Logeyt {
+    background: url(../images/icons.png) no-repeat;
+    background-position: -71px -221px;
+}
+
+.Logegw {
+    display: inline-block;
+    background: url(../images/icons.png) no-repeat;
+    background-position: -88px -205px;
+    width: 13px;
+    height: 14px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.headerLogoHide ul li a:hover .Logegw {
+     background: url(../images/icons.png) no-repeat;
+    background-position: -88px -221px;
+} 
+
+.headerSpan span{
+    color: #6b6b6b;
+}
+/* leftHide end */
+
+
+/* right */
+.headerRight {
+    color: white;
+}
+.headerService a i {
+    display: inline-block;
+    background: url(../images/vi_icon2.png) no-repeat;
+    background-position: -124px 0;
+    width: 18px;
+    height: 17px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.headerService a:hover i {
+    background: url(../images/vi_icon2.png) no-repeat;
+    background-position: -39px -45px;
+}
+
+.headerServiceInput a input {
+    width: 60px;
+    height: 20px;
+    font-size: 14px;
+    border: 0 none;
+    border-bottom: 1px solid #878a8d;
+    background: none;
+    vertical-align: middle;
+    outline: none;
+}
+
+.headerServiceInput a input[type="button"] {
+    position: relative;
+    outline: none;
+    width: 20px;
+    height: 20px;
+    margin-left: -5px;  
+    background: url(../images/vi_icon2.png);
+    background-position: 0 -22px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.headerBrand a i {
+    display: inline-block;
+    background: url(../images/vi_icon2.png) no-repeat;
+    background-position: -24px -22px;
+    width: 18px;
+    height: 17px;
+    vertical-align: middle;
+}
+
+.headerBrand a:hover i{
+    background: url(../images/vi_icon2.png) no-repeat;
+    background-position: -83px -45px;
+}
+
+.headerConsult a{
+    display: inline-block;
+    background: url(../images/vi_icon2.png) no-repeat;
+    background-position: 0 -110px;
+    width: 118px;
+    height: 30px;
+    vertical-align: middle;
+    margin-top: 5px;
+    line-height: 28px;
+    font-size: 14px;
+    padding-left: 38px;
+    color: #000;
+}
+
+.headerConsult a:hover {
+    background: url(../images/vi_icon2.png) no-repeat;
+    background-position: 0 -68px;
+}
+
+.headerAsideHide {
+    margin-left: -15px;
+}
+.headerAsideHide a i {
+    display: inline-block;
+    background: url(../images/rotate1.png) no-repeat;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+.headerAsideHide a {
+    transition: 0.4s;
+}
+.headerAsideHide a:hover i,.fs {
+    background: url(../images/rotate2.png) no-repeat;
+    transform: rotate(-180deg);
+}
+/* headerTop end */
+
+
+
+/* header end */
+
+/* main start */
+.main {
+    width: 100%;
+    height: 3582px;
+    background-color: #00aaff;
+}
+/* main end */
+
+/* footer start */
+.footer {
+    width: 100%;
+    height: 448px;
+    background-color: #0f151c;
+}
+/* footer start 
